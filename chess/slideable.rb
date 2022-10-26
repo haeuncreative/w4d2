@@ -44,7 +44,8 @@ module Slideable
     def grow_unblocked_moves_in_dir(dx, dy)
         res = [self.pos]
         temp = [res[-1][0] + dx, res[-1][1] + dy]
-        boundary = temp[0] > 7 || temp[0] < 0 || temp[1] > 7 || temp[1] < 0 
+        # boundary = temp[0] > 7 || temp[0] < 0 || temp[1] > 7 || temp[1] < 0 
+        boundary = valid_pos?(temp)
         friendly_fire = !temp.empty? && @board.temp.color == self.color
         true_fire = !temp.empty? && @board.temp.color != self.color
         condition = boundary || friendly_fire || true_fire

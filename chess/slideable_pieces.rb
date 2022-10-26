@@ -9,9 +9,10 @@ class Rook < Piece
     end
     #slideable.vertical_dir
     def move_dirs
-        horizontal_dirs.each do |direction|
-            all_moves += grow_unblocked_moves_in_dir(*direction)
-        end
+        horizontal_dirs
+        # horizontal_dirs.each do |direction|
+        #     all_moves += grow_unblocked_moves_in_dir(*direction)
+        # end
     end
 end
 
@@ -22,9 +23,10 @@ class Bishop < Piece
         @symbol = symbol
     end
     def move_dirs
-        diagonal_dirs.each do |direction|
-            all_moves += grow_unblocked_moves_in_dir(*direction)
-        end
+        diagonal_dirs
+        # diagonal_dirs.each do |direction|
+        #     all_moves += grow_unblocked_moves_in_dir(*direction)
+        # end
     end
 end
 
@@ -35,6 +37,6 @@ class Queen < Piece
         @symbol = symbol
     end
     def move_dirs
-        moves
+        diagonal_dirs + horizontal_dirs
     end
 end
