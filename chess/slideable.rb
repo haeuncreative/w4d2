@@ -45,9 +45,9 @@ module Slideable
         res = [self.pos]
         temp = [res[-1][0] + dx, res[-1][1] + dy]
         # boundary = temp[0] > 7 || temp[0] < 0 || temp[1] > 7 || temp[1] < 0 
-        boundary = valid_pos?(temp)
-        friendly_fire = !temp.empty? && @board.temp.color == self.color
-        true_fire = !temp.empty? && @board.temp.color != self.color
+        boundary = @board.valid_pos?(temp)
+        friendly_fire = !board[temp].empty? && @board[temp].color == self.color
+        true_fire = !board[temp].empty? && @board[temp].color != self.color
         condition = boundary || friendly_fire || true_fire
         until condition
             res << temp
