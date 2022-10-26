@@ -1,6 +1,6 @@
 class Piece
 
-    attr_reader :pos
+    attr_reader :pos, :color
     def initialize(color, board, pos)
         @color = color
         @board = board
@@ -12,7 +12,7 @@ class Piece
     end
 
     def empty?
-        self.is_a?(NullPiece)
+        self.color == nil
     end
 
     def valid_moves
@@ -43,5 +43,10 @@ class Piece
 
     def move_into_check?(end_pos)
         
+    end
+
+    def inspect
+        {symbol => @symbol,
+        pos => @pos}.inspect
     end
 end

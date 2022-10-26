@@ -1,7 +1,9 @@
 require_relative "piece"
+require_relative "nullpiece"
 class Board
     def initialize
-        @rows = Array.new(8) { Array.new(8, nil) }
+        @null_piece = NullPiece.instance
+        @rows = Array.new(8) { Array.new(8, @null_piece) }
         @rows.each_with_index do |row, i|
             if i < 2 || i > 5
                 row.each_with_index do |ele, j|
@@ -9,7 +11,6 @@ class Board
                 end
             end
         end
-        @null_piece = nil
     end
 
     def [](pos)
