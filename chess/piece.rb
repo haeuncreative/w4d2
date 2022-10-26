@@ -1,6 +1,5 @@
 class Piece
-
-    attr_reader :pos, :color
+    attr_reader :pos, :color, :board
     def initialize(color, board, pos)
         @color = color
         @board = board
@@ -46,7 +45,6 @@ class Piece
     end
 
     def inspect
-        {symbol => @symbol,
-        pos => @pos}.inspect
+        {"symbol" => @symbol, "pos" => @pos}.inspect
     end
 end
