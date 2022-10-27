@@ -68,6 +68,9 @@ class Board
         # change null piece
         @rows[start_pos[0]][start_pos[1]] = @null_piece
         target_piece.pos = end_pos
+
+        system('clear')
+        print_board
     end
 
     def valid_pos?(pos)
@@ -117,6 +120,21 @@ class Board
         end
     end
 
+    def print_board
+        puts "  0  1  2  3  4  5  6  7"
+        (0...8).each do |i|
+            (0...8).each do |j|
+                if j == 0
+                    print "#{i} #{@rows[i][j].symbol}  "
+                else
+                    print "#{@rows[i][j].symbol}  "
+                end
+            end
+            puts ""
+        end
+
+    end
+
     def pieces
         
     end
@@ -129,3 +147,9 @@ class Board
         
     # end
 end
+
+b = Board.new
+b.move_piece('black', [1,4], [2,4])
+b.move_piece('white', [6,5], [5,5])
+b.move_piece('black', [0,3], [4,7])
+b.check('white')
